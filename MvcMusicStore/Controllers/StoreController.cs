@@ -8,31 +8,32 @@ using MvcMusicStore.Models;
 
     public class StoreController : Controller
     {
+        MusicStoreEntities StoreDb = new MusicStoreEntities();
+         
         //
         // GET: /Store/
         public ActionResult Index()
         {
-            var genre = new List<Genre> { 
-            new Genre{name="ROCk"},
-            new Genre{name="Bhangra"},
-            new Genre{name="romantic"}            
-            };
-
+           
+           // var artist = StoreDb.Artists.ToList();
+            var genre = StoreDb.Genres.ToList();
+           // var artist = StoreDb.Artists.ToList();
             return View(genre);
+            
         }
 
         //GET:/Store/Browse
         public ActionResult Browse(string Genre)
         {
-            string message = HttpUtility.HtmlEncode(Genre).ToString();
-            ViewBag.genre = message;
-            return View();
+            var genremodel = StoreDb.Genres.Single(g=>g.Name==Genre);
+
+             return View(genremodel);
         }
 
         //GET:Store/Details
         public ActionResult Details(string Id )
         {
-            var album=new Albums {Title="album"+ Id};
+            var album=new Album {Title="album"+ Id};
             return View(album);
         }
 
