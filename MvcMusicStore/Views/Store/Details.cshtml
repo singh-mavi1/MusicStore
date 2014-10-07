@@ -1,10 +1,27 @@
-﻿@model MvcMusicStore.Models.Albums
+﻿@model MvcMusicStore.Models.Album
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Album Details - @Model.Title</h2>
+<ul>
+    <li>@Model.Title</li>
+    <li>@Model.Price</li>
+    <h2>hey</h2>
+    
+</ul>
 
-<h2>Album name - @Model.Title</h2>
+<ul>
+
+    @foreach (var song in Model.Songs)
+    {
+        <li>@song.Title   ----@song.DownloadLink</li>
+
+
+    }
+
+
+</ul>
 

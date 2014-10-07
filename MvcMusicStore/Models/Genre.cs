@@ -12,6 +12,7 @@ namespace MvcMusicStore.Models
         public string Description { get; set; }
         public List<Album> Albums { get; set; }
     }
-
+     
+     
    
 }

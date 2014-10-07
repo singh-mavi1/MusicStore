@@ -1,4 +1,6 @@
-﻿@{
+﻿@*@model IEnumerable<MvcMusicStore.Models.Album>*@
+@model MvcMusicStore.ViewModel.ViewModels   
+@{
     ViewBag.Title = "Home Page";
 }
 @section featured {
@@ -33,3 +35,27 @@
 
     </li>
 </ol>
+
+<nav>
+    <ul id="menu">
+       @foreach (var gen in Model.Genres)
+            { 
+                <li>@Html.ActionLink(gen.Name, "Browse", "Store", new {Genre=gen.Name},null) </li>
+            }
+      </ul>
+</nav>
+<h3>Latest Albums</h3>
+<ul>
+
+    @foreach(var alb in Model.Albums)
+    { 
+   <li> 
+    @Html.ActionLink(@alb.Title,"Details","Store",new {Id=alb.AlbumId},null)
+        <img src="~/AlbumArt/1.jpg" alt="@alb.Title" height="10%" width="15%" />
+
+       
+
+   </li>
+    }
+
+</ul>

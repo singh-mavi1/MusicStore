@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcMusicStore.Models.Genre>
+﻿@model IEnumerable<MvcMusicStore.Models.Song>
 
 @{
     ViewBag.Title = "Index";
@@ -6,12 +6,13 @@
 }
 
 <h2>Select your Fav from  @Model.Count()</h2>
+
 <ul>
     @foreach(var genre in Model)
     { 
-        <li>@Html.ActionLink(@genre.Name, "Browse", new { genre =@genre.Name })  </li>
-        
-   
+        @*<li>@Html.ActionLink(@genre.Name, "Browse", new { genre =@genre.Name })  </li>*@
+       
+        <h2>@genre.Title</h2> 
     }
    
     </ul>
